@@ -1,23 +1,27 @@
-def convert_temperature(temperature, scale):
-    if scale.lower() == 'celsius':
-        fahrenheit = (temperature * 9/5) + 32
-        return fahrenheit
-    elif scale.lower() == 'kelvin':
-        celsius = temperature - 273.15
-        fahrenheit = (celsius * 9/5) + 32
-        return fahrenheit
+def convert_temperature(value, from_scale, to_scale):
+    if from_scale == "Celsius" and to_scale == "Fahrenheit":
+        return (value * 9/5) + 32
+    elif from_scale == "Fahrenheit" and to_scale == "Celsius":
+        return (value - 32) * 5/9
+    elif from_scale == "Celsius" and to_scale == "Kelvin":
+        return value + 273.15
+    elif from_scale == "Kelvin" and to_scale == "Celsius":
+        return value - 273.15
+    elif from_scale == "Fahrenheit" and to_scale == "Kelvin":
+        return (value - 32) * 5/9 + 273.15
+    elif from_scale == "Kelvin" and to_scale == "Fahrenheit":
+        return (value - 273.15) * 9/5 + 32
     else:
-        raise ValueError("Unsupported temperature scale. Supported scales are 'Celsius' and 'Kelvin'.")
+        return "Unsupported conversion"
 
-def main():
-    try:
-        temperature = float(160)
-        scale = input('celsius') #'celsius'/'kelvin'
-        
-        converted_temperature = convert_temperature(temperature, scale)
-        print(f"{temperature} {scale.capitalize()} is {converted_temperature:.2f} Fahrenheit.")
-    except ValueError as e:
-        print(f"Error: {e}")
-    
 if __name__ == "__main__":
-    main()
+    print("Temperature Converter")
+    from_scale = input("Enter the source temperature scale (Celsius, Fahrenheit, Kelvin): ")
+    to_scale = input("Enter the target temperature scale (Celsius, Fahrenheit, Kelvin): ")
+    
+    try:
+        value = float(input(f"Enter the temperature in {from_scale}: "))
+        result = convert_temperature(value, from_scale, to_scale)
+        print(f"{value} {from_scale} is equal to {result} {to_scale}")
+    except ValueError:
+        print("Invalid input. Please enter a valid temperature value.")
