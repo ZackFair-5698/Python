@@ -8,9 +8,9 @@ import time
 
 def Welcome():
     print("\n\n---------------------------------------------------------",end="")
-    print("\n|\n|  Scientific Calculator .....  \t|", end="\n")
-    print("|\n| MADE BY:  ", " Group \t\t|", end="\n")
-    print("|\n| \t       CP44  \t\t\t \t\t|")
+    print("\n|\n|  Scientific Calculator   \t|", end="\n")
+    print("|\n| MADE BY:  ", " Group CP44\t\t|", end="\n")
+    # print("|\n| \t       CP44  \t\t\t \t\t|")
     for i in tqdm (range (100), desc="Loading..."):
         time.sleep(0.02)
         pass
